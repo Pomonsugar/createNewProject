@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "48ae32e1-c3de-40ec-9117-a60588dbd667",
+		"_postman_id": "abf1b670-32cd-48cd-81f4-c3187c20461b",
 		"name": "Workspace",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "24187240"
@@ -100,7 +100,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "username=pomon_pp%40yahoo.com&password=Pp272811"
 				},
 				"url": {
 					"raw": "https://api.octoperf.com/public/users/login",
@@ -231,7 +231,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://api.octoperf.com/workspaces/member-of",
+					"raw": "https://api.octoperf.com/workspaces/member-of?projectId={{projectId}}",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -241,6 +241,12 @@
 					"path": [
 						"workspaces",
 						"member-of"
+					],
+					"query": [
+						{
+							"key": "projectId",
+							"value": "{{projectId}}"
+						}
 					]
 				}
 			},
@@ -258,7 +264,6 @@
 							"});",
 							"",
 							"var responseData = pm.response.json();",
-							"",
 							"",
 							"postman.setEnvironmentVariable(\"projectId\", responseData.id);"
 						],
@@ -346,7 +351,7 @@
 					"raw": "{\n    \"id\": \"\",\n    \"created\": \"2022-11-09T02:48:33.518Z\",\n    \"lastModified\": \"2022-11-09T02:48:33.518Z\",\n    \"userId\": \"{{userId}}\",\n    \"workspaceId\": \"{{workspaceId}}\",\n    \"name\": \"request 1\",\n    \"description\": \"spend money\",\n    \"type\": \"DESIGN\",\n    \"tags\": []\n}"
 				},
 				"url": {
-					"raw": "https://api.octoperf.com/design/projects",
+					"raw": "https://api.octoperf.com/design/projects?workspaceId={{workspaceId}}&userId={{userID}}",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -356,6 +361,16 @@
 					"path": [
 						"design",
 						"projects"
+					],
+					"query": [
+						{
+							"key": "workspaceId",
+							"value": "{{workspaceId}}"
+						},
+						{
+							"key": "userId",
+							"value": "{{userID}}"
+						}
 					]
 				}
 			},
@@ -487,7 +502,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 204\", function () {",
 							"    pm.response.to.have.status(204);",
 							"});"
 						],
@@ -566,10 +581,6 @@
 						"value": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "https://api.octoperf.com/design/projects/{{projectId}}",
 					"protocol": "https",
